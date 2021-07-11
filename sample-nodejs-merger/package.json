@@ -1,0 +1,31 @@
+{
+  "name": "sample-nodejs-merger",
+  "version": "1.0.0",
+  "description": "This repo will merge two catalogs to one output CSV file",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "catalogs",
+    "merger",
+    "javascropt",
+    "nodejs"
+  ],
+  "author": "Ehsan Gazar",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "nodemon": "^2.0.11",
+    "prettier": "2.3.2"
+  },
+  "dependencies": {
+    "papaparse": "^5.3.1"
+  }
+}
