@@ -1,6 +1,20 @@
 const Papa = require('papaparse')
 const fs = require('fs')
 
+const readSourcesNames = (fileNames) => {
+  const catalogNames = fileNames.filter((fileName) => {
+    return fileName.startsWith('catalog')
+  })
+  const sources = catalogNames.map((catalogName) => {
+    return catalogName.replace(/catalog|.csv/g, '')
+  })
+  return sources
+}
+
+const readDirectory = (folderPath) => {
+  return fs.readdirSync(folderPath)
+}
+
 const readCSV = (filePath) => {
   return new Promise((resolve) => {
     const csvFile = fs.readFileSync(filePath).toString()
@@ -15,4 +29,6 @@ const readCSV = (filePath) => {
 
 module.exports = {
   readCSV,
+  readDirectory,
+  readSourcesNames,
 }

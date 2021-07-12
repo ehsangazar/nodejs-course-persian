@@ -1,8 +1,26 @@
-const { readCSV } = require('./src/utils/fileHandler')
+const {
+  readCSV,
+  readDirectory,
+  readSourcesNames,
+} = require('./src/utils/fileHandler')
+const asyncForEach = require('./src/utils/asyncForEach')
+
 // 1. Read CSV Files
 const readFiles = async () => {
-  const json = await readCSV('./input/catalogA.csv')
-  console.log('json', json)
+  const fileNames = await readDirectory('./input')
+  const sources = readSourcesNames(fileNames)
+  const data = []
+  await asyncForEach(sources, async (sourceName) => {
+    data[sourceName] = []
+    data[sourceName].catalog = await readCSV(`./input/catalog${sourceName}.csv`)
+    data[sourceName].suppliers = await readCSV(
+      `./input/suppliers${sourceName}.csv`
+    )
+    data[sourceName].barcodes = await readCSV(
+      `./input/barcodes${sourceName}.csv`
+    )
+  })
+  console.log('data', data)
 }
 
 readFiles()
