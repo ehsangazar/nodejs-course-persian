@@ -2,6 +2,7 @@ const {
   readCSV,
   readDirectory,
   readSourcesNames,
+  generateCSV,
 } = require('./src/utils/fileHandler')
 const asyncForEach = require('./src/utils/asyncForEach')
 const CatalogModel = require('./src/models/CatalogModel')
@@ -37,8 +38,9 @@ const runApp = async () => {
 
   // 2. Process Files and Merge Products
   const mergedResult = await processMergeStep(data)
-  console.log('mergedResult', mergedResult)
+
   // 3. Generate output file
+  generateCSV(mergedResult.products)
 }
 
 runApp()
