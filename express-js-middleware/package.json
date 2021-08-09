@@ -1,0 +1,16 @@
+{
+  "name": "express-js-middleware",
+  "version": "1.0.0",
+  "description": "Middleware,Express",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ehsan Gazar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  }
+}
