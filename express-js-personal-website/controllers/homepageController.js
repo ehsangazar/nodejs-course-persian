@@ -1,5 +1,10 @@
 const homepageController = (req, res) => {
-  res.send('HOME PAGE From controller')
+  res.send(`
+    <div>
+      <h1>Ehsan Gazar</h1>
+      <img src="/assets/img/profile.jpg" />
+    </div>  
+  `)
 }
 
 module.exports = homepageController
