@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const app = express()
 const PORT = 4000
 
+app.set('view engine', 'ejs')
 app.use(morgan('dev'))
 app.use(express.static('public'))
 
