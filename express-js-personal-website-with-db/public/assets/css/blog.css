@@ -52,6 +52,9 @@ h6 {
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
+.nav-scroller .nav .active {
+  color: #28a745 !important;
+}
 
 .nav-scroller .nav-link {
   padding-top: 0.75rem;
