@@ -40,11 +40,12 @@
                     <div class="d-flex w-100 justify-content-center align-items-center">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li> -->
+                                <% pages = (counts / 11) %>
+                                <% for(let i = 0; i < pages ; i ++) { %> 
+                                    <li class="page-item"><a class="page-link" href="?page=<%= i+1 %> "><%= i+1 %></a></li>
+                                <% } %> 
+                                <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
                             </ul>
                         </nav>
                     </div>

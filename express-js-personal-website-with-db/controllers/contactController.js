@@ -1,5 +1,11 @@
-const contactController = (req, res) => {
-  res.send('Contact From controller')
+const Category = require('../models/Category')
+
+const contactController = async (req, res) => {
+  const categories = await Category.findAll()
+  res.render('contact', {
+    categories: categories.map((category) => category.name),
+    activeId: null,
+  })
 }
 
 module.exports = contactController

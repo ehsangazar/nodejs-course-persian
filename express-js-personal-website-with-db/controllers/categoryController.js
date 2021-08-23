@@ -3,15 +3,24 @@ const Post = require('../models/Post')
 
 const categoryController = async (req, res) => {
   const categories = await Category.findAll()
-  const posts = await Post.findAll({
+  const offset = (Number(req.query.page) - 1) * 11 || 0
+  const counts = await Post.count({
     where: {
       category_id: Number(req.params.id) + 1,
     },
   })
+  const posts = await Post.findAll({
+    where: {
+      category_id: Number(req.params.id) + 1,
+    },
+    limit: 11,
+    offset,
+  })
   res.render('index', {
     categories: categories.map((category) => category.name),
     posts: posts,
-    activeId: Number(req.params.id),
+    activeCategoryId: Number(req.params.id),
+    counts,
   })
 }
 
