@@ -3,6 +3,7 @@ const Post = require('../models/Post')
 
 const categoryController = async (req, res) => {
   const categories = await Category.findAll()
+  const activePageId = Number(req.query.page) || 1
   const offset = (Number(req.query.page) - 1) * 11 || 0
   const counts = await Post.count({
     where: {
@@ -21,6 +22,7 @@ const categoryController = async (req, res) => {
     posts: posts,
     activeCategoryId: Number(req.params.id),
     counts,
+    activePageId,
   })
 }
 

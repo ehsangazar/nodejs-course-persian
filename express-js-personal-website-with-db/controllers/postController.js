@@ -11,7 +11,7 @@ const postController = async (req, res) => {
     post: post,
     prevPostEnabled: !!prevPost,
     nextPostEnabled: !!nextPost,
-    activeId: null,
+    activeCategoryId: null,
   })
 }
 
