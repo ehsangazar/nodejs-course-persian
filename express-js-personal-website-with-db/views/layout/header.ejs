@@ -1,12 +1,17 @@
 <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
         <div class="col-4 pt-1">
-            <a href="/login">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="button">Login</button>
-            </a>
-            <a href="/signup">
-                <button class="btn btn-success my-2 my-sm-0" type="button">Signup</button>
-            </a>
+            <% if (!user) { %> 
+                <a href="/login">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button">Login</button>
+                </a>
+                <a href="/signup">
+                    <button class="btn btn-success my-2 my-sm-0" type="button">Signup</button>
+                </a>
+            <% } %> 
+            <% if (user) { %> 
+                Welcome <%= user.name %>!
+            <% } %> 
         </div>
         <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="/">Ehsan Gazar Blog</a>

@@ -4,7 +4,8 @@ const morgan = require('morgan')
 const flash = require('connect-flash')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
-const { handler404, handlerServerErrors } = require('./helpers/errorHandler')
+const errorHandler = require('./helpers/errorHandler')
+const passport = require('passport')
 const app = express()
 require('./helpers/passport')
 
@@ -22,12 +23,15 @@ app.use(
     secret: 'keyboard dog and cat',
   })
 )
+app.use(passport.initialize())
+app.use(passport.session())
+
 app.use(flash())
 
 app.use('/', router)
 
-app.use(handler404)
-app.use(handlerServerErrors)
+app.use(errorHandler.handler404)
+app.use(errorHandler.handlerServerErrors)
 
 app.listen(PORT, () => {
   console.log(`App is running on ${PORT}`)

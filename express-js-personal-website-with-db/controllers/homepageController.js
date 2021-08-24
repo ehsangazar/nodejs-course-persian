@@ -17,6 +17,7 @@ const homepageController = async (req, res) => {
     activeCategoryId: null,
     counts,
     activePageId,
+    user: req.user,
   })
 }
 
