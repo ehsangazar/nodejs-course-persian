@@ -9,6 +9,7 @@ const loginController = require('../controllers/loginController')
 const signupController = require('../controllers/signupController')
 const searchController = require('../controllers/searchController')
 const { body } = require('express-validator')
+const dashboardController = require('../controllers/dashboardController')
 
 router.get('/', homepageController)
 router.get('/post/:id', postController)
@@ -16,6 +17,7 @@ router.get('/category/:id', categoryController)
 router.get('/about', aboutController)
 router.get('/contact', contactController)
 router.get('/search', searchController)
+router.get('/dashboard', dashboardController)
 
 router.get('/login', loginController.get)
 router.post(
