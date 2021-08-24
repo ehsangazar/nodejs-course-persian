@@ -1,7 +1,9 @@
 const User = require('../models/User')
 
 const get = (req, res) => {
-  res.render('signup')
+  res.render('signup', {
+    flash: req.flash(),
+  })
 }
 const post = async (req, res) => {
   await User.create({
