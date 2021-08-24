@@ -8,6 +8,7 @@ const categoryController = require('../controllers/categoryController')
 const loginController = require('../controllers/loginController')
 const signupController = require('../controllers/signupController')
 const searchController = require('../controllers/searchController')
+const { body } = require('express-validator')
 
 router.get('/', homepageController)
 router.get('/post/:id', postController)
@@ -17,8 +18,19 @@ router.get('/contact', contactController)
 router.get('/search', searchController)
 
 router.get('/login', loginController.get)
-router.post('/login', loginController.post)
+router.post(
+  '/login',
+  body('email').isEmail().normalizeEmail().toLowerCase(),
+  body('password').isLength({ min: 6 }),
+  loginController.post
+)
 router.get('/signup', signupController.get)
-router.post('/signup', signupController.post)
+router.post(
+  '/signup',
+  body('name').not().isEmpty(),
+  body('email').isEmail().normalizeEmail().toLowerCase(),
+  body('password').isLength({ min: 6 }),
+  signupController.post
+)
 
 module.exports = router

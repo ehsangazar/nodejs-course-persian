@@ -17,7 +17,7 @@
                     <div class="alert alert-<%= key === 'error'?'danger':key %>" role="alert">
                         <%= flash[key] %>
                     </div>
-                    <% } %>
+                <% } %>
                 <br />
                 <label for="inputName" class="sr-only">Name</label>
                 <input name="name" type="text" id="inputName" class="form-control" placeholder="Name" required=""
@@ -39,6 +39,13 @@
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
+
+                <% errors.forEach(error => { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error.param %> - <%= error.msg %>
+                    </div>
+                <% }) %>
+
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
                 <p class="mt-5 mb-3 text-muted">© 2021</p>
             </form>
