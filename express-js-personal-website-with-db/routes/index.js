@@ -16,8 +16,9 @@ router.get('/about', aboutController)
 router.get('/contact', contactController)
 router.get('/search', searchController)
 
-router.get('/login', loginController)
-router.get('/signup', signupController)
-router.post('/signup', signupController)
+router.get('/login', loginController.get)
+router.post('/login', loginController.post)
+router.get('/signup', signupController.get)
+router.post('/signup', signupController.post)
 
 module.exports = router
