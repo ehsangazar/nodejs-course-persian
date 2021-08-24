@@ -5,6 +5,7 @@ const contactController = async (req, res) => {
   res.render('contact', {
     categories: categories.map((category) => category.name),
     activeCategoryId: null,
+    user: req.user,
   })
 }
 

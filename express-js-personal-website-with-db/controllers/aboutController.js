@@ -5,6 +5,7 @@ const aboutController = async (req, res) => {
   res.render('about', {
     categories: categories.map((category) => category.name),
     activeCategoryId: null,
+    user: req.user,
   })
 }
 

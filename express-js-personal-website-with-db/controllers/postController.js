@@ -12,6 +12,7 @@ const postController = async (req, res) => {
     prevPostEnabled: !!prevPost,
     nextPostEnabled: !!nextPost,
     activeCategoryId: null,
+    user: req.user,
   })
 }
 

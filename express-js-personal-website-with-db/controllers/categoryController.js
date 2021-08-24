@@ -23,6 +23,7 @@ const categoryController = async (req, res) => {
     activeCategoryId: Number(req.params.id),
     counts,
     activePageId,
+    user: req.user,
   })
 }
 
