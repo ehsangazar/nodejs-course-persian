@@ -4,7 +4,7 @@ const contactController = async (req, res) => {
   const categories = await Category.findAll()
   res.render('contact', {
     categories: categories.map((category) => category.name),
-    activeId: null,
+    activeCategoryId: null,
   })
 }
 

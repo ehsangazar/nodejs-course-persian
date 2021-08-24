@@ -4,7 +4,7 @@ const aboutController = async (req, res) => {
   const categories = await Category.findAll()
   res.render('about', {
     categories: categories.map((category) => category.name),
-    activeId: null,
+    activeCategoryId: null,
   })
 }
 
