@@ -34,7 +34,7 @@ User.validPassword = (user, pwd) => {
 }
 
 User.encryptPassword = async (myPlainTextPassword) => {
-  const saltRounds = 10
+  const saltRounds = process.env.SALT_ROUNDS || 10
   const salt = await bcrypt.genSaltSync(saltRounds)
   const hash = await bcrypt.hashSync(myPlainTextPassword, salt)
   return hash

@@ -1,3 +1,6 @@
+require('dotenv').config({
+  path: './variables.env',
+})
 const express = require('express')
 const router = require('./routes')
 const morgan = require('morgan')
@@ -9,7 +12,7 @@ const passport = require('passport')
 const app = express()
 require('./helpers/passport')
 
-const PORT = 4000
+const PORT = process.env.PORT || 4000
 
 app.set('view engine', 'ejs')
 app.use(morgan('dev'))
@@ -20,7 +23,7 @@ app.use(express.urlencoded())
 app.use(cookieParser())
 app.use(
   session({
-    secret: 'keyboard dog and cat',
+    secret: process.env.SESSION_SECRET_KEY,
   })
 )
 app.use(passport.initialize())
