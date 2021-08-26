@@ -16,6 +16,23 @@ const { isLoggedIn, isNotLoggedIn } = require('../helpers/auth')
 const mailController = require('../controllers/mailController')
 const resetController = require('../controllers/resetController')
 const AdminPostController = require('../controllers/AdminPostController')
+const multer = require('multer')
+const path = require('path')
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, '../public/uploads'))
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
+    cb(
+      null,
+      `${file.fieldname}-${uniqueSuffix}.${file.originalname.split('.')[1]}`
+    )
+  },
+})
+
+const upload = multer({ storage: storage })
 
 router.get('/', homepageController)
 router.get('/post/:id', postController)
@@ -59,5 +76,6 @@ router.post(
   resetController.post
 )
 router.get('/admin/create', AdminPostController.get)
+router.post('/admin/create', upload.single('image'), AdminPostController.post)
 
 module.exports = router

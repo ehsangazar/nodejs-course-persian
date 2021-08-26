@@ -82,7 +82,15 @@
                                 autofocus="" autocomplete="off" />
                             <br />
                             <label for="inputEmail" class="sr-only">Description</label>
-                            <textarea name="email" type="email" id="inputEmail" class="form-control" placeholder="Description"></textarea>
+                            <textarea name="description" type="text" id="inputEmail" class="form-control" placeholder="Description"></textarea>
+                            <br />
+                            <label for="inputEmail" class="sr-only">Category</label>
+                            <select name="category_id">
+                                <% categories.forEach(category => { %> 
+                                    <option value="<%= category.id %>"> <%= category.name %>  </option>
+                                <% }) %> 
+                            </select>
+                            <br />
                             <br />
                             <% errors.forEach(error=> { %>
                                 <div class="alert alert-danger" role="alert">

@@ -1,3 +1,4 @@
+const { format } = require('date-fns')
 const Category = require('../models/Category')
 const Post = require('../models/Post')
 
@@ -13,7 +14,13 @@ const dashboardController = async (req, res) => {
   })
   res.render('dashboard', {
     categories: categories.map((category) => category.name),
-    posts: posts,
+    posts: posts.map((post) => {
+      return {
+        id: post.id,
+        title: post.title,
+        created_at: format(new Date(post.created_at), 'yyyy/mm/dd'),
+      }
+    }),
     activeCategoryId: null,
     counts,
     activePageId,
