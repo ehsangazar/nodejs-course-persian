@@ -16,6 +16,7 @@ const categoryController = async (req, res) => {
     },
     limit: 11,
     offset,
+    include: Category,
   })
   res.render('index', {
     categories: categories.map((category) => category.name),

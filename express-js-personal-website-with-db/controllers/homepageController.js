@@ -10,7 +10,9 @@ const homepageController = async (req, res) => {
     limit: 11,
     offset,
     order: [['created_at', 'DESC']],
+    include: Category,
   })
+
   res.render('index', {
     categories: categories.map((category) => category.name),
     posts: posts,
