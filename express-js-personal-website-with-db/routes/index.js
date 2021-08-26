@@ -15,6 +15,7 @@ const logoutController = require('../controllers/logoutController')
 const { isLoggedIn, isNotLoggedIn } = require('../helpers/auth')
 const mailController = require('../controllers/mailController')
 const resetController = require('../controllers/resetController')
+const AdminPostController = require('../controllers/AdminPostController')
 
 router.get('/', homepageController)
 router.get('/post/:id', postController)
@@ -22,7 +23,7 @@ router.get('/category/:id', categoryController)
 router.get('/about', aboutController)
 router.get('/contact', contactController)
 router.get('/search', searchController)
-router.get('/dashboard', isLoggedIn, dashboardController)
+router.get('/dashboard', dashboardController)
 
 router.get('/login', isNotLoggedIn, loginController.get)
 router.post(
@@ -57,5 +58,6 @@ router.post(
   body('password').isLength({ min: 6 }),
   resetController.post
 )
+router.get('/admin/create', AdminPostController.get)
 
 module.exports = router
