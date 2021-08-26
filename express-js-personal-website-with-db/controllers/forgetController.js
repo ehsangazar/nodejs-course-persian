@@ -39,6 +39,7 @@ const post = async (req, res) => {
   await User.update(
     {
       token: token,
+      token_used: 0,
     },
     {
       where: {
@@ -52,7 +53,7 @@ const post = async (req, res) => {
     {
       title: 'Forget Password Instruction',
       description: 'Please click on the link below',
-      link: `http://localhost:4000/reset?token=${token}`,
+      link: `${process.env.URL}/reset?token=${token}`,
     }
   )
 

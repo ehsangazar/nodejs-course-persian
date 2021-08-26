@@ -27,6 +27,10 @@ const User = db.define(
       type: DataTypes.NUMBER,
       defaultValue: '-',
     },
+    token_used: {
+      type: DataTypes.NUMBER,
+      defaultValue: 0,
+    },
   },
   {
     timestamps: false,

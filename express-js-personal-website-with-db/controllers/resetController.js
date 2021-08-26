@@ -1,12 +1,25 @@
 const { validationResult } = require('express-validator')
 const User = require('../models/User')
-const sendMail = require('../utils/sendMail')
-const ejs = require('ejs')
-const path = require('path')
 
-const get = (req, res) => {
+const get = async (req, res) => {
+  const existanceUser = await User.findOne({
+    where: {
+      token: req.query.token,
+      token_used: 0,
+    },
+  })
+  if (!existanceUser) {
+    req.flash('warning', 'This token is not valid')
+    res.render('reset', {
+      flash: req.flash(),
+      errors: [],
+    })
+    return
+  }
+
   res.render('reset', {
     flash: req.flash(),
+    token: req.query.token,
     errors: [],
   })
 }
@@ -16,49 +29,45 @@ const post = async (req, res) => {
     res.render('reset', {
       flash: req.flash(),
       errors: errors.array(),
+      token: req.query.token,
     })
     return
   }
 
   const existanceUser = await User.findOne({
     where: {
-      email: req.body.email,
+      token: req.query.token,
+      token_used: 0,
     },
   })
-  if (existanceUser) {
-    req.flash('warning', 'This user already exists')
+  if (!existanceUser) {
+    req.flash('warning', 'This token is not valid')
     res.render('reset', {
       flash: req.flash(),
       errors: [],
+      token: req.query.token,
     })
     return
   }
 
-  await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: await User.encryptPassword(req.body.password),
-    age: 0,
-  })
-
-  const html = await ejs.renderFile(
-    path.join(__dirname, '../views/mail/auth.ejs'),
+  await User.update(
     {
-      title: 'Welcome to My Blog',
-      description: 'You have successfully registered in Ehsan Gazar Blog',
-      link: null,
+      password: await User.encryptPassword(req.body.password),
+      token_used: 1,
+    },
+    {
+      where: {
+        token: req.query.token,
+      },
     }
   )
 
-  await sendMail({
-    to: req.body.email,
-    subject: 'Welcome to My Blog',
-    html: html,
-  })
+  req.flash('success', 'Your password has successfully reset')
 
   res.render('reset', {
     flash: req.flash(),
     errors: [],
+    token: req.query.token,
   })
 }
 
