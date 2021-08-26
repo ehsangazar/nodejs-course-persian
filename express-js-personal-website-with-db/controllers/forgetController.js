@@ -3,9 +3,10 @@ const User = require('../models/User')
 const sendMail = require('../utils/sendMail')
 const ejs = require('ejs')
 const path = require('path')
+const md5 = require('md5')
 
 const get = (req, res) => {
-  res.render('signup', {
+  res.render('forget', {
     flash: req.flash(),
     errors: [],
   })
@@ -13,7 +14,7 @@ const get = (req, res) => {
 const post = async (req, res) => {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
-    res.render('signup', {
+    res.render('forget', {
       flash: req.flash(),
       errors: errors.array(),
     })
@@ -25,38 +26,44 @@ const post = async (req, res) => {
       email: req.body.email,
     },
   })
-  if (existanceUser) {
-    req.flash('warning', 'This user already exists')
-    res.render('signup', {
+  if (!existanceUser) {
+    req.flash('warning', 'This user does not exists')
+    res.render('forget', {
       flash: req.flash(),
       errors: [],
     })
     return
   }
 
-  await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: await User.encryptPassword(req.body.password),
-    age: 0,
-  })
+  const token = md5(req.body.email + new Date())
+  await User.update(
+    {
+      token: token,
+    },
+    {
+      where: {
+        email: req.body.email,
+      },
+    }
+  )
 
   const html = await ejs.renderFile(
     path.join(__dirname, '../views/mail/auth.ejs'),
     {
-      title: 'Welcome to My Blog',
-      description: 'You have successfully registered in Ehsan Gazar Blog',
-      link: null,
+      title: 'Forget Password Instruction',
+      description: 'Please click on the link below',
+      link: `http://localhost:4000/reset?token=${token}`,
     }
   )
 
   await sendMail({
     to: req.body.email,
-    subject: 'Welcome to My Blog',
+    subject: 'Forget Password Instruction',
     html: html,
   })
 
-  res.render('signup', {
+  req.flash('success', 'New instruction has been sent to your mailbox')
+  res.render('forget', {
     flash: req.flash(),
     errors: [],
   })

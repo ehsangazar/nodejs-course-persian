@@ -23,6 +23,10 @@ const User = db.define(
     age: {
       type: DataTypes.NUMBER,
     },
+    token: {
+      type: DataTypes.NUMBER,
+      defaultValue: '-',
+    },
   },
   {
     timestamps: false,
@@ -34,7 +38,7 @@ User.validPassword = (user, pwd) => {
 }
 
 User.encryptPassword = async (myPlainTextPassword) => {
-  const saltRounds = process.env.SALT_ROUNDS || 10
+  const saltRounds = Number(process.env.SALT_ROUNDS) || 10
   const salt = await bcrypt.genSaltSync(saltRounds)
   const hash = await bcrypt.hashSync(myPlainTextPassword, salt)
   return hash
