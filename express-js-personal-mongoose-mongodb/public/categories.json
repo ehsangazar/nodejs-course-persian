@@ -1,0 +1,18 @@
+[
+{"type":"header","version":"5.1.0","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"personal_website"},
+{"type":"table","name":"categories","database":"personal_website","data":
+[
+{"id":"1","name":"World"},
+{"id":"2","name":"U.S"},
+{"id":"3","name":"Technology"},
+{"id":"4","name":"Design"},
+{"id":"5","name":"Culture"},
+{"id":"6","name":"Business"},
+{"id":"7","name":"Politics"},
+{"id":"8","name":"Opinion"},
+{"id":"9","name":"Science"},
+{"id":"10","name":"National"}
+]
+}
+]

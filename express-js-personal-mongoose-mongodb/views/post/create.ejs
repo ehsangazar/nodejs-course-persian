@@ -1,0 +1,112 @@
+<html>
+
+<head>
+    <%- include('../layout/head'); -%>
+        <link href="/assets/css/dashboard.css" rel="stylesheet">
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1026.0" data-gr-ext-installed="">
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">Ehsan Gazar Blog</a>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/logout">Sign out</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7vitemCountsa2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/create">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7vitemCountsa2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                Create Post
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div class="chartjs-size-monitor"
+                    style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                    <div class="chartjs-size-monitor-expand"
+                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink"
+                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                        <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                    </div>
+                </div>
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Admin Panel</h1>
+
+                </div>
+
+                <h2>Create Post</h2>
+                <div class="table-responsive">
+                    <form action="/admin/create" method="POST" class="form-signin" enctype="multipart/form-data">
+                        <% for (const key in flash) { %>
+                        <div class="alert alert-<%= key === 'error'?'danger':key %>" role="alert">
+                            <%= flash[key] %>
+                        </div>
+                        <% } %>
+                            <br />
+                            <label for="inputName" class="sr-only">Image</label>
+                            <input name="image" type="file" id="inputName" class="form-control" placeholder="Title" required=""
+                                autofocus="" autocomplete="off" />
+                            <br />
+                            <label for="inputName" class="sr-only">Title</label>
+                            <input name="title" type="text" id="inputName" class="form-control" placeholder="Title" required=""
+                                autofocus="" autocomplete="off" />
+                            <br />
+                            <label for="inputEmail" class="sr-only">Description</label>
+                            <textarea name="description" type="text" id="inputEmail" class="form-control" placeholder="Description"></textarea>
+                            <br />
+                            <label for="inputEmail" class="sr-only">Category</label>
+                            <select name="category_id">
+                                <% categories.forEach(category => { %> 
+                                    <option value="<%= category.id %>"> <%= category.name %>  </option>
+                                <% }) %> 
+                            </select>
+                            <br />
+                            <br />
+                            <% errors.forEach(error=> { %>
+                                <div class="alert alert-danger" role="alert">
+                                    <%= error.param %> - <%= error.msg %>
+                                </div>
+                            <% }) %>
+                        <div style="width:200px;">
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

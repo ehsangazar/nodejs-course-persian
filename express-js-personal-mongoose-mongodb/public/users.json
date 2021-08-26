@@ -1,0 +1,28 @@
+[
+{"type":"header","version":"5.1.0","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"personal_website"},
+{"type":"table","name":"users","database":"personal_website","data":
+[
+{"id":"17","name":"a","email":"a@a.com","password":"$2b$10$xEluAp5TmqwoPjRnfBQfiOwmcS0aOYeTOshArORb\/no2XAJ5xqRm.","age":"0","token":"","token_used":"0"},
+{"id":"45","name":"Zenia Henderson","email":"tecy@mailinator.com","password":"$2b$10$fWgIUpjKRvlZpf7haQOC1eblkUonT4nBDzApmpVYxJuc.A3zxPB.q","age":"0","token":"","token_used":"0"},
+{"id":"46","name":"Wesley Copeland","email":"becozyvama@mailinator.com","password":"$2b$10$fAs7xPyY0wGreSZ5Mhft0eny6G\/BasZFNqYi5dPc0b8BOF67LYDbO","age":"0","token":"","token_used":"0"},
+{"id":"47","name":"Theodore Malone","email":"hysyhuha@mailinator.com","password":"$2b$10$ADJfdnuDjWGxo3RLzmWLeuZ7HxrnExWrUwLk.OrM\/JPc.IarNjgGe","age":"0","token":"","token_used":"0"},
+{"id":"48","name":"Kimberly Delgado","email":"gotodo@mailinator.com","password":"$2b$10$2W9GVa6WUO7.g0ey4y9RGe3S4ni0KYpy4fmA7KbWsvrFj8hEB2jhm","age":"0","token":"","token_used":"0"},
+{"id":"49","name":"Iris Howard","email":"jaku@mailinator.com","password":"$2b$10$zFyBAXMRing\/1HWdWabu3uncv\/6c6c5A31tW\/Or055Kk46Nz\/78Gu","age":"0","token":"","token_used":"0"},
+{"id":"50","name":"Indira Clark","email":"wylejepoh@mailinator.com","password":"$2b$10$EVImfGXCS2fdQwlV8IVB1.3fnUJz7Rg85RzasAgaxZOwLSuImZV6y","age":"0","token":"","token_used":"0"},
+{"id":"51","name":"Samuel Chambers","email":"tyduwim@mailinator.com","password":"$2b$10$CLqSIwg22qL7HQ8LzXMJNe072JUvqizc1rNL218rz1SxaYNBE\/mii","age":"0","token":"","token_used":"0"},
+{"id":"52","name":"August Reynolds","email":"nimuqi@mailinator.com","password":"$2b$10$ZXj6scrDUdDDh9UlQa8UD.TBAUItrq6TPUhRIkDtEihnI.hm\/59Z6","age":"0","token":"","token_used":"0"},
+{"id":"53","name":"Amela Fletcher","email":"getogojuf@mailinator.com","password":"$2b$10$UeLFIkFSoexJuYZzLY6.We9GCTcF5Qe\/bVQeM0c3V7hxsse2C5wPi","age":"0","token":"","token_used":"0"},
+{"id":"54","name":"Macon Rowland","email":"lisa@mailinator.com","password":"$2b$10$acs3JpNbI6DNoMscKrgjouL\/fXpacswZkV3EyhMQORQPZzVkhQHBe","age":"0","token":"","token_used":"0"},
+{"id":"55","name":"Octavia Turner","email":"juxeneh@mailinator.com","password":"$2b$10$HEWIyGi44Rbt1fdMRuzmm.eNZlnWDWOqZkKzRTibvZQlFLzSl4APi","age":"0","token":"","token_used":"0"},
+{"id":"56","name":"Arden Boyd","email":"loxy@mailinator.com","password":"$2b$10$iBeY.UjDs4lwFKuo9.lOPemhV2LknxCH6TAIb.UM7rKXKS.xAZPN.","age":"0","token":"","token_used":"0"},
+{"id":"58","name":"Susan Clements","email":"qyhiba@mailinator.com","password":"$2b$10$JUynfAC2AIfkOhYVJ5vu2.37K5FBt1qjqdqwzsZdakXN1HIlPUZxe","age":"0","token":"","token_used":"0"},
+{"id":"59","name":"Aimee Orr","email":"pypazorusu@mailinator.com","password":"$2b$10$8mtyPWGhk91ccTkv0v5gT.Rhgi6Nfpp.WVyJq4WjZDxzy5Cjcuglu","age":"0","token":"","token_used":"0"},
+{"id":"60","name":"Nina Contreras","email":"ceseqylip@mailinator.com","password":"$2b$10$UwORkzHwrnjniPc8tUuBcuUjYYk7hHg264RL1Q6cNF.5dm.yOL1M6","age":"0","token":"","token_used":"0"},
+{"id":"61","name":"Driscoll Franco","email":"byzoq@mailinator.com","password":"$2b$10$o\/SkpsxkNI5WGEA6azi0q.7NcSpFYEYfFaxKGHRgdkdzWJvkBK1Z6","age":"0","token":"","token_used":"0"},
+{"id":"62","name":"Tamekah Bradford","email":"qozimez@mailinator.com","password":"$2b$10$fvNDwln3OAIcFMfejzTMsekDdDNaJdgG0XuiKjoR2BYSowpJvleLa","age":"0","token":"","token_used":"0"},
+{"id":"64","name":"Lavinia Brennan","email":"xado@mailinator.com","password":"$2b$10$UlYvREtfPi5bpJapmph9wODYKeqMOlPAIPImiizstTCipWsg0qbyu","age":"0","token":"-","token_used":"0"},
+{"id":"65","name":"Hunter Lamb","email":"toyod10263@ampswipe.com","password":"$2b$10$15Bxyg.J2JYMwvaibp71y.jWnGHXGdFwB0uFul7sl3S\/J8vWO6LwC","age":"0","token":"80e7465ed3ef24ff88002c5f97cbf147","token_used":"1"}
+]
+}
+]

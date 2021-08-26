@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <%- include('layout/head'); -%>
+</head>
+
+<body>
+
+    <body data-new-gr-c-s-check-loaded="14.1026.0" data-gr-ext-installed="">
+        <div class="container">
+            <%- include('layout/header', categories); -%>
+                <main role="main" class="container">
+                    <div class="row">
+                        <div class="col-md-8 blog-main">
+                            <h3 class="pb-3 mb-4 font-it<alic border-bottom">
+                               <%= categories[post.category_id] %> 
+                            </h3>
+                
+                            <div class="blog-post">
+                                <img src=<%= post.image %> width="600px" />
+                                <h2 class="blog-post-title"><%= post.title %> </h2>
+                                <p class="blog-post-meta"><%= post.created_at %> </p>
+                
+                                <%= post.description %> 
+                            </div><!-- /.blog-post -->
+                
+                
+                            <nav class="blog-pagination">
+                                <a class="btn btn-outline-primary <% if(!prevPostEnabled) { %> disabled <% } %>" href="/post/<%= post.id - 1 %>">Older</a>
+                                <a class="btn btn-outline-primary <% if(!nextPostEnabled) { %> disabled <% } %>" href="/post/<%= post.id + 1 %>">Newer</a>
+                            </nav>
+                
+                        </div><!-- /.blog-main -->
+                
+                        <%- include('layout/sidebar'); -%>
+                
+                    </div><!-- /.row -->
+                
+                </main>
+
+        </div>
+        <%- include('layout/footer'); -%>
+    </body>
+</body>
+
+</html>
