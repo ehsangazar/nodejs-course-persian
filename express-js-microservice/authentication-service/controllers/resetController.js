@@ -17,10 +17,8 @@ const get = async (req, res) => {
     return
   }
 
-  res.render('reset', {
-    flash: req.flash(),
-    token: req.query.token,
-    errors: [],
+  res.json({
+    token: req.query.token,,
   })
 }
 const post = async (req, res) => {
@@ -64,10 +62,8 @@ const post = async (req, res) => {
 
   req.flash('success', 'Your password has successfully reset')
 
-  res.render('reset', {
-    flash: req.flash(),
-    errors: [],
-    token: req.query.token,
+  res.json({
+    token: req.query.token,,
   })
 }
 
