@@ -1,0 +1,52 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
+    command: ./node_modules/.bin/nodemon --inspect=0.0.0.0:9229 index.js
+    depends_on:
+      - mysql
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 4000:4000
+      - 9229:9229
+    env_file:
+      - variables.env
+    environment:
+      - NODE_ENV=development
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - 6603:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: personal_website
+    logging:
+      driver: none
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+  nginx:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./static:/opt/html
+    ports:
+      - 80:80
+    links:
+      - app:app
+    logging:
+      driver: none
+volumes:
+  db_data: {}
